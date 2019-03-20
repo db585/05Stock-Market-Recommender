@@ -1,3 +1,10 @@
 v1.0:
-
+  ✔ Create basic component structure @done(19-03-20 17:39)
+  ✔ Implement React Router @done(19-03-20 17:40)
+  ✔ Make basic style @done(19-03-20 17:40)
+  ✔ Find open Stock API @done(19-03-20 17:41)
+  ☐ Implement redux
+  ☐ Fetch data from StockAPI
+  ☐ Find open social network API
+  ☐ Brush up finish style :) 
 Fix:

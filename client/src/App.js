@@ -1,28 +1,35 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
+import './App.css'
+// import { connect } from 'react-redux'
+
+import Navbar from './components/Navbar'
+import StockForm from './components/StockForm'
+import StockAdvice from './components/StockAdvice'
+import About from './components/About'
 
 class App extends Component {
-  render() {
+  renderHome () {
+    console.log('Home page rendered')
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <StockForm />
+        <StockAdvice />
       </div>
-    );
+    )
+  }
+  render () {
+    return (
+      <BrowserRouter>
+        <div className='App'>
+          <Navbar />
+          <Route exact path='/' render={this.renderHome} />
+          <Route exact path='/about' component={About} />
+        </div>
+      </BrowserRouter>
+
+    )
   }
 }
 
-export default App;
+export default App
