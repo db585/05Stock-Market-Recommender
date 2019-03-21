@@ -2,10 +2,10 @@
 import { FETCH_STOCKS, FILTER_BY_NAME_STOCKS, UNFILTER_STOCKS } from '../actions/types'
 import axios from 'axios'
 
-export const fetchStocksAction = () => async dispatch => {
+export const fetchStocksAction = (smbl = 'LOGM') => async dispatch => {
   try {
     // console.log('from fetchStocksAction from stockActions')
-    const data = await (await axios.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=LOGM&apikey=7QVG6CNCMNH2FPG2')).data
+    const data = await (await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${smbl}&apikey=7QVG6CNCMNH2FPG2`)).data
     console.log('axios data', data)
     dispatch({
       type: FETCH_STOCKS,

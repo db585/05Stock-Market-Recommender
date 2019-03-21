@@ -7,7 +7,7 @@ const initialState = {
 }
 
 export default (state = initialState, { type, payload }) => {
-  console.log('from stockReducer payload', payload)
+  // console.log('from stockReducer payload', payload)
   switch (type) {
     case FETCH_STOCKS:
       return {

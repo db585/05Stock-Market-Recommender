@@ -6,7 +6,7 @@ const initialState = {
 }
 
 export default (state = initialState, { type, payload }) => {
-  console.log('from socialReducer payload', payload)
+  // console.log('from socialReducer payload', payload)
   switch (type) {
     case FETCH_SOCIAL:
       return {
