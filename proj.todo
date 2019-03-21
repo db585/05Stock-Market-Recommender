@@ -3,8 +3,11 @@ v1.0:
   ✔ Implement React Router @done(19-03-20 17:40)
   ✔ Make basic style @done(19-03-20 17:40)
   ✔ Find open Stock API @done(19-03-20 17:41)
-  ☐ Implement redux
-  ☐ Fetch data from StockAPI
-  ☐ Find open social network API
+  ✔ Implement redux @done(19-03-21 12:06)
+  ✔ Fetch data from StockAPI @done(19-03-21 12:06)
+  ☐ Create StockForm component and put data in redux
   ☐ Brush up finish style :) 
-Fix:
+  Fix:
+  v2.0:
+    ☐ Find open social network API (Twitter)
+    ☐ Fetch data from Twitter

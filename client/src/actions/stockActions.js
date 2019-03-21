@@ -5,7 +5,7 @@ import axios from 'axios'
 export const fetchStocksAction = () => async dispatch => {
   try {
     // console.log('from fetchStocksAction from stockActions')
-    const data = await (await axios.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=7QVG6CNCMNH2FPG2')).data
+    const data = await (await axios.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=LOGM&apikey=7QVG6CNCMNH2FPG2')).data
     console.log('axios data', data)
     dispatch({
       type: FETCH_STOCKS,
