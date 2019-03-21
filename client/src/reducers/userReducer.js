@@ -5,7 +5,7 @@ const initialState = {
 }
 
 export default (state = initialState, { type, payload }) => {
-  console.log('from userReducer payload ', payload)
+  // console.log('from userReducer payload ', payload)
   switch (type) {
     case LOGGEDIN:
       return {

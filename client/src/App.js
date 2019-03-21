@@ -10,7 +10,7 @@ import About from './components/About'
 
 class App extends Component {
   renderHome () {
-    console.log('Home page rendered')
+    // console.log('Home page rendered')
     return (
       <div>
         <StockForm />
