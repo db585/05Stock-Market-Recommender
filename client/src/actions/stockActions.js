@@ -1,6 +1,7 @@
 // eslint-disable-next-line
-import { FETCH_STOCKS, FILTER_BY_NAME_STOCKS, UNFILTER_STOCKS } from '../actions/types'
+import { FETCH_STOCKS, FETCH_STOCK_SYMBOLS } from '../actions/types'
 import axios from 'axios'
+import symbols from '../data/symbols.json'
 
 export const fetchStocksAction = (smbl = 'LOGM') => async dispatch => {
   try {
@@ -15,38 +16,24 @@ export const fetchStocksAction = (smbl = 'LOGM') => async dispatch => {
     console.log('err is ', err)
   }
 }
+export const fetchStockSymbolsAction = () => async dispatch => {
+  try {
+    // Server has CORS policy. No success with changing axios or fetch parameters
+    // So we upload all symbols from json file as temp solution
+    // console.log('from fetchStocksAction from stockActions')
+    // axios.defaults.headers.get['Content-Type'] = 'application/json'
+    // const data = await (await window.fetch('users.json'
+    // )).json()
+    // console.log('axios data', data)
+    // // const response = await (await window.fetch(`https://financialmodelingprep.com/api/stock/list/all`)).json()
+    // // console.log('axios data', data)
 
-// export const filterByCategory = (category) => async dispatch => {
-//   try {
-//     dispatch({
-//       type: FILTER_BY_CATEGORY_ITEMS,
-//       payload: category
-//     })
-//   } catch (err) {
-//     console.log('err is ', err)
-//   }
-// }
-
-// export const filterWildSearch = (arrSearch) => async dispatch => {
-//   try {
-//     dispatch({
-//       type: FILTER_WILD_SEARCH,
-//       payload: arrSearch
-//     })
-//   } catch (err) {
-//     console.log('err is ', err)
-//   }
-// }
-
-// export const unfilterItems = () => async dispatch => {
-//   console.log('unfilterItems from itemActions')
-//   try {
-//     dispatch({
-//       type: UNFILTER_ITEMS
-//     })
-//   } catch (err) {
-//     console.log('err is ', err)
-//   }
-// }
-
-// TODO: AddItem should be transfered here if we need it
+    // console.log('users', users)
+    dispatch({
+      type: FETCH_STOCK_SYMBOLS,
+      payload: symbols
+    })
+  } catch (err) {
+    console.log('err is ', err)
+  }
+}

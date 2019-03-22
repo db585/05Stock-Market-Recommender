@@ -5,7 +5,6 @@ import { fetchStocksAction } from '../actions/stockActions'
 import { fetchSocialAction } from '../actions/socialActions'
 
 export class StockAdvice extends Component {
-  // devs  Test API data only
   componentDidMount () {
     // To check a pause for future loading from BackEnd
     // setTimeout(this.props.fetchStocksAction, 1000)
@@ -14,6 +13,8 @@ export class StockAdvice extends Component {
     this.props.fetchStocksAction()
 
     // Instead of socialMediaCountGenerator by Technical Requirement
+    // Stock symbol by default is LOGM.
+    // Twitter is the only media for v1.0
     this.props.fetchSocialAction({
       smbl: 'LOGM',
       media: 'Twitter'
@@ -21,6 +22,7 @@ export class StockAdvice extends Component {
   }
 
   render () {
+    // Get data from store and calculate recommendations
     const getStocks = () => {
       // Destruct
       let { stock, social } = this.props
@@ -40,6 +42,7 @@ export class StockAdvice extends Component {
 
       // Data fetched
       // Get symbol of stock from
+      // Version before we get all stock symbols and company names
       let stockSymbol = Object.keys(stock)
 
       /// / Used in first version. Now we get it from recommendationAlgorithm
@@ -55,6 +58,7 @@ export class StockAdvice extends Component {
       //   // return 0
       // }
 
+      // Logic of algorithm
       // Suppose that social media give a trend which drives normal life of the company and company marketing team efforts.
       // If we have less than average posts means company is doing good and continue its business which means `buy` recommendation
       // If we have a splash of activity in social we have a bad news for a company usually which mean `sell` recommendation.
@@ -96,6 +100,7 @@ export class StockAdvice extends Component {
         }
       }
 
+      // Icons for recommendation
       const getRecommIcon = (recom) => {
         if (recom.recom === 1) {
           return (
@@ -112,13 +117,13 @@ export class StockAdvice extends Component {
         }
       }
 
-      // Loop through nested objects and get date, close price, social
+      // Loop through nested objects and get date, close price, social post number
       const getStockSocialData = () => {
         return stockSymbol.map(smbl => {
           // console.log('smbl', smbl)
           const dateArr = Object.keys(stock[smbl])
           return dateArr.map(date => {
-            // Convert to float to calculate difference later probably
+            // Convert to float to calculate difference for later using
             const priceOnDate = parseFloat(stock[smbl][date]['4. close']).toFixed(2)
 
             // const twitterOnDate = getSocialOnDate(smbl, date, 'Twitter')
@@ -128,9 +133,13 @@ export class StockAdvice extends Component {
             // console.log('recom', recom)
             return (
               // Key is milliseconds from 1970 for each date
-              <div key={Date.parse(date)}>
-                {date} {priceOnDate} {recom.socNumOnDate} {recom.average} {recom.recom} {getRecommIcon(recom)}
-              </div>
+              <tr key={Date.parse(date)}>
+                <td>{date}</td>
+                <td style={{ textAlign: 'center' }}>{priceOnDate}</td>
+                <td style={{ textAlign: 'right' }}>{recom.socNumOnDate}</td>
+                <td style={{ textAlign: 'right' }}>{recom.average}</td>
+                <td style={{ textAlign: 'center' }}>{getRecommIcon(recom)}</td>
+              </tr>
             )
           })
         })
@@ -138,13 +147,26 @@ export class StockAdvice extends Component {
 
       return (
         <div>
-          <React.Fragment>
+          <div style={{ textAlign: 'center' }} >
             {stockSymbol}
-          </React.Fragment>
+          </div>
           <hr />
-          <React.Fragment>
-            {getStockSocialData()}
-          </React.Fragment>
+          <table>
+            <thead>
+              <tr>
+                <th style={{ textAlign: 'center', width: '7em' }}>Date</th>
+                <th style={{ textAlign: 'right', width: '3em' }}>Price</th>
+                <th style={{ textAlign: 'right', width: '4em' }}>Twitter</th>
+                <th style={{ textAlign: 'right', width: '4em' }}>Avg</th>
+                <th style={{ textAlign: 'center', width: '4em' }}>Recom</th>
+              </tr>
+            </thead>
+            <tbody>
+              <React.Fragment>
+                {getStockSocialData()}
+              </React.Fragment>
+            </tbody>
+          </table>
         </div>
       )
     }

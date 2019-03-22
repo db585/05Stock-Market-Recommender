@@ -1,7 +1,7 @@
 const containerStyle = {
   display: 'flex',
   margin: '0.5em auto',
-  width: '50%',
+  width: '70%',
   border: '1px solid grey',
   padding: '1em',
   textAlign: 'justify',

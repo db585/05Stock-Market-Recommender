@@ -5,8 +5,9 @@ v1.0:
   ✔ Find open Stock API @done(19-03-20 17:41)
   ✔ Implement redux @done(19-03-21 12:06)
   ✔ Fetch data from StockAPI @done(19-03-21 12:06)
-  ☐ Create StockForm component and put data in redux
-  ☐ Brush up finish style :) 
+  ✔ Create recommendationAlgorithm function @done(19-03-21 20:05)
+  ✔ Create StockForm component and put data in redux @done(19-03-22 09:52)
+  ✔ Brush up finish style :) @done(19-03-22 10:55)
   Fix:
   v2.0:
     ☐ Find open social network API (Twitter)

@@ -12,7 +12,7 @@ export const fetchSocialAction = (paramObj) => async dispatch => {
     let { smbl, media } = paramObj
 
     let socialObj = {}
-    let dateGen = new Date('2019-01-01T00:00:00')
+    let dateGen = new Date('2018-09-01T00:00:00')
     // console.log('dateGen', dateGen)
     let dataFin = Date.now()
     // console.log('dataFin', Date(dataFin))
